@@ -14,8 +14,9 @@ public class SafeUser {
     public void setPassword(String password) {
         if(password.length()>=8 && checkPassword(password)){
             this.password = password;
-        }else{
-            System.out.println("La contrasena no cumple con las condiciones");
+
+        }else if(password.length()<8){
+            System.out.println("La contrasena debe tener al menos 8 caracteres");
         }
     }
     public String getUsername() {
@@ -39,6 +40,16 @@ public class SafeUser {
             }else if(codeAscii >= 48 && codeAscii <= 57){
                 number = true;
             }
+        }
+
+        if(!upperCase){
+            System.out.println("La contrasena debe contener al menos una letra mayuscula");
+        }
+        if(!lowerCase){
+            System.out.println("La contrasena debe contener al menos una letra minuscula");
+        }
+        if(!number){
+            System.out.println("La contrasena debe contener al menos un numero");
         }
         return upperCase && lowerCase && number;
     }
